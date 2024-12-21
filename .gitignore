@@ -1,0 +1,5 @@
+~/LBS/Script/yesterday main ❯ cat .gitignore
+*.txt
+*.json
+*__pycache__
+poc/
