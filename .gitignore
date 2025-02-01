@@ -1,7 +1,7 @@
 pylama.ini
 *.txt
 *.json
-*.yam
+*.yaml
 *__pycache__
 poc/
 dist/
