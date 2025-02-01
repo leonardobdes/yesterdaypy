@@ -1,5 +1,8 @@
-~/LBS/Script/yesterday main ❯ cat .gitignore
+pylama.ini
 *.txt
 *.json
+*.yam
 *__pycache__
 poc/
+dist/
+*egg*/

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yesterdaypy"
+authors = [{ name = "Leonardo Souza" }]
+description = "A tool to backup Linode configuration"
+readme = "README.rst"
+requires-python = ">=3.8"
+keywords = ["linode", "backup"]
+license = { text = "MIT License" }
+dependencies = ["linode_api4"]
+dynamic = ["version"]
+
+[project.scripts]
+yesterdaypy = "yesterdaypy.yesterdaypy:main"
+
+[project.urls]
+Homepage = "https://github.com/leonardobdes/yesterdaypy"
+Documentation = "https://github.com/leonardobdes/yesterdaypy"
+Repository = "https://github.com/leonardobdes/yesterdaypy.git"
+Issues = "https://github.com/leonardobdes/yesterdaypy/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "yesterdaypy.version.__version__" }
+
+[tool.setuptools.packages.find]
+exclude = ['poc']
