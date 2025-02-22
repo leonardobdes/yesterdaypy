@@ -5,7 +5,8 @@ import argparse
 import os
 import sys
 
-import linode_api4
+# Linode API imports
+from linode_api4 import LinodeClient
 
 # Internal Imports
 # Import only with "from x import y", to simplify the code.
@@ -17,14 +18,15 @@ from yesterdaypy.utils.utils import ERRORS, error
 PRODUCTS = ["firewall"]
 
 
-def backup() -> None:
+def backup(client: LinodeClient) -> None:
     """"Backup objects to local or Linode Object Storage."""
     if args.storage is None:
         storage = os.getcwd()
     else:
         storage = args.storage
     for product in args.products:
-        eval(f"{product}.backup(storage='{storage}')")
+        eval(f"{product}.backup(client=client, storage='{storage}'"
+             f", s3_id='{s3_id}', s3_secret='{s3_secret}', s3_url='{s3_url}')")
 
 
 parser = argparse.ArgumentParser()
@@ -45,10 +47,23 @@ if "LINODE_TOKEN" in os.environ:
     token = os.environ["LINODE_TOKEN"]
 else:
     error(1)
+if "AWS_ACCESS_KEY_ID" in os.environ:
+    s3_id = os.environ["AWS_ACCESS_KEY_ID"]
+else:
+    s3_id = None
+if "AWS_SECRET_ACCESS_KEY" in os.environ:
+    s3_secret = os.environ["AWS_SECRET_ACCESS_KEY"]
+else:
+    s3_secret = None
+if "AWS_ENDPOINT_URL" in os.environ:
+    s3_url = os.environ["AWS_ENDPOINT_URL"]
+else:
+    s3_url = None
 
 
 def main() -> None:
-    backup()
+    client = LinodeClient(token)
+    backup(client=client)
 
 
 if __name__ == "__main__":
