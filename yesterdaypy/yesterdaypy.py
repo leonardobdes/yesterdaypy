@@ -11,11 +11,11 @@ from linode_api4 import LinodeClient
 # Internal Imports
 # Import only with "from x import y", to simplify the code.
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from yesterdaypy.products import firewall
+from yesterdaypy.products import firewall, linode
 from yesterdaypy.utils.utils import ERRORS, error
 
-# PRODUCTS = ["firewall", "linode"]
-PRODUCTS = ["firewall"]
+PRODUCTS = ["firewall", "linode"]
+# PRODUCTS = ["firewall"]
 
 
 def backup(client: LinodeClient) -> None:
