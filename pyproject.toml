@@ -7,7 +7,7 @@ name = "yesterdaypy"
 authors = [{ name = "Leonardo Souza" }]
 description = "A tool to backup Linode configuration"
 readme = "README.rst"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 keywords = ["linode", "backup"]
 license = { text = "MIT License" }
 dependencies = ["linode_api4"]
