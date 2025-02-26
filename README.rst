@@ -86,6 +86,21 @@ How to use it?
 | Use **--errors** to get the list of errors.
 | Lastly, **--help** for the help information.
 
+To do
+-----
+* Debug
+    Add debug options for troubleshooting.
+* Verbose
+    Add verbosity so is visible what the software is doing.
+* Add more products
+
+Other software ideas
+--------------------
+* YesterdayPy_Clone
+    Clone a object with a new label (name).
+* YesterdayPy_Restore
+    Restore the object to the configuration of the JSON file.
+
 Author
 ------
 
