@@ -22,3 +22,16 @@ Technical Bits
 | Requires Python version 3.9 or above.
 | Requires linode_api4 (https://github.com/linode/linode_api4-python)
 | If using to backup configuration to Linode Object Storage, Boto3 is also required (https://github.com/boto/boto3)
+
+Installation
+------------
+| Use pipx (https://github.com/pypa/pipx) to install YesterdayPy.
+
+.. code-block:: python
+   pipx install yesterdaypy
+   pipx inject yesterdaypy boto3
+
+| If you need Linode Object Storage, install Boto3.
+
+.. code-block:: python
+   pipx inject yesterdaypy boto3
