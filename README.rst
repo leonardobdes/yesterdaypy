@@ -10,19 +10,19 @@ What is YesterdayPy? - Longer Version
 |
 | Note: There was already a project called yesterday in PyPI, so I just added Py in front of the name.
 |
-| YesterdayPy creates a backup of your configuration in Linode.
-| For each Linode product (Firewall for example), the software will create a JSON file for each object you created.
-| The file will be named using format ID+date.json, with ID being the ID of the object (every Linode object has an ID), and date is the last update date.
-| If the file already exists, no file is created. That means, it only backup the changes since last backup.
+| YesterdayPy creates a backup of your Linode configuration.
+| For each Linode product (Firewall for example), the software will create a JSON file for each object you have.
+| The file will be named using format **ID+date.json**, with ID being the ID of the object (every Linode object has an ID), and date is the last update date.
+| If the file already exists, no file is created. That means, it will only backup the changes since last backup.
 |
 | If you want to know how the object was configured yesterday while troubleshooting a problem, you can just compare the current version with the JSON file.
 
 Technical Bits
 --------------
 | Requires Python version 3.9 or above.
-| Requires **linode_api4** (https://github.com/linode/linode_api4-python)
-| If using to backup configuration to Linode Object Storage, **Boto3** is also required (https://github.com/boto/boto3)
-| Current supports the following products Firewall, Linode, LKE, and VPC.
+| Requires **linode_api4** (https://github.com/linode/linode_api4-python).
+| If using to backup configuration to Linode Object Storage, **Boto3** is also required (https://github.com/boto/boto3).
+| Currently supports the following products Firewall, Linode, LKE, and VPC.
 
 Installation
 ------------
@@ -68,7 +68,13 @@ How to use it?
 
    yesterdaypy
 
-| It will backup all objects to current directory, for all supported products.
+| It will backup all objects to current directory, for all supported products, with a folder per product.
+
+| To backup to a specific folder, specify the location.
+
+.. code-block:: python
+
+   yesterdaypy --storage /home/user/backup/example/
 
 | To backup to Linode Object Storage, stogare needs to start with **s3://** followed by the bucket name.
 
