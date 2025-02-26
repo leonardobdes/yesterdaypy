@@ -21,7 +21,7 @@ Technical Bits
 --------------
 | Requires Python version 3.9 or above.
 | Requires **linode_api4** (https://github.com/linode/linode_api4-python)
-| If using to backup configuration to Linode Object Storage, **boto3** is also required (https://github.com/boto/boto3)
+| If using to backup configuration to Linode Object Storage, **Boto3** is also required (https://github.com/boto/boto3)
 | Current supports the following products Firewall, Linode, LKE, and VPC.
 
 Installation
@@ -79,3 +79,22 @@ How to use it?
 | You can also use **--products** to limit the products you want to backup.
 | Use **--errors** to get the list of errors.
 | Lastily, **--help** for the help information.
+
+Author
+------
+
+| Name:
+| Leonardo Souza
+| LinkedIn:
+| https://uk.linkedin.com/in/leonardobdes
+
+How to report bugs?
+-------------------
+
+| Use `GitHub <https://github.com/leonardobdes/yesterdaypy/issues>`_ issues to report bugs.
+
+How to request new functionalities?
+-----------------------------------
+
+| Use `GitHub <https://github.com/leonardobdes/yesterdaypy/issues>`_ issues to request new functionalities.
+| Use the following format in the title **RFE - Title**.
