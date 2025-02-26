@@ -1,6 +1,5 @@
 ERRORS = {
     1: "Environment variable LINODE_TOKEN not setup",
-    2: "error 2 text"
 }
 
 

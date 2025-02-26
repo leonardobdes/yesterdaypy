@@ -22,6 +22,7 @@ Technical Bits
 | Requires Python version 3.9 or above.
 | Requires linode_api4 (https://github.com/linode/linode_api4-python)
 | If using to backup configuration to Linode Object Storage, Boto3 is also required (https://github.com/boto/boto3)
+| Current supports the following products Firewall, Linode, LKE, and VPC.
 
 Installation
 ------------
@@ -31,10 +32,50 @@ Installation
 
    pipx install yesterdaypy
 
-| If you need Linode Object Storage, install Boto3.
+| If you need Linode Object Storage to store the backup, install Boto3.
 
 .. code-block:: python
 
    pipx inject yesterdaypy boto3
 
-sss
+| You can also just clone this repository and run:
+
+.. code-block:: python
+
+   python yesterdaypy/yesterdaypy.py
+
+How to use it?
+--------------
+| First you need to setup the necessary environment variables.
+|
+| Linode token is mandatory:
+
+.. code-block:: python
+
+   export LINODE_TOKEN=ABC
+
+| If using Linode Object Storage:
+
+.. code-block:: python
+
+   export AWS_ACCESS_KEY_ID=ABC
+   export AWS_SECRET_ACCESS_KEY=ABC
+   export AWS_ENDPOINT_URL=ABC
+
+| Run the software:
+
+.. code-block:: python
+
+   yesterdaypy
+
+| It will backup all objects to current directory, for all supported products.
+
+| To backup to Linode Object Storage, stogare needs to start with *s3://* followed by the bucket name.
+
+.. code-block:: python
+
+   yesterdaypy --storage s3://bucket-name
+
+| You can also use *--products* to limit the products you want to backup.
+| Use *--errors* to get the list of errors.
+| Lastily, *--help* for the help information.

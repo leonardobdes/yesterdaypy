@@ -40,9 +40,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--errors", action="store_true",
                     help="Print all error codes and their meaning.")
 parser.add_argument("--storage", type=str,
-                    help="storage to save the data.")
+                    help="Storage to save the data.")
 parser.add_argument("--products", choices=PRODUCTS, nargs="+", default=PRODUCTS,
-                    help="products to backup.")
+                    help="Products to backup.")
 args = parser.parse_args()
 
 if args.errors:
