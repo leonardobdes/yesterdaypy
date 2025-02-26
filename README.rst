@@ -91,16 +91,16 @@ To do
 * Debug
     Add debug options for troubleshooting.
 * Verbose
-    Add verbosity so is visible what the software is doing.
+    Add verbosity to make visible what the software is doing.
 * Products
     Add more products.
 * Thread
-    Add threads for large number of objects.
+    Add threads for large configurations.
 
 Other software ideas
 --------------------
 * YesterdayPy_Clone
-    Clone a object with a new label (name).
+    Clone an object with a new label (name).
 * YesterdayPy_Restore
     Restore the object to the configuration of the JSON file.
 
