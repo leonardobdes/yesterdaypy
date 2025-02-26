@@ -92,7 +92,8 @@ To do
     Add debug options for troubleshooting.
 * Verbose
     Add verbosity so is visible what the software is doing.
-* Add more products
+* Products
+    Add more products.
 * Thread
     Add threads for large number of objects.
 
