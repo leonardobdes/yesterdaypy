@@ -11,22 +11,29 @@ from linode_api4 import LinodeClient
 # Internal Imports
 # Import only with "from x import y", to simplify the code.
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from yesterdaypy.products import firewall, linode
-from yesterdaypy.utils.utils import ERRORS, error
+from yesterdaypy.product import backup
+from yesterdaypy.utils import ERRORS, error
 
-PRODUCTS = ["firewall", "linode"]
-# PRODUCTS = ["firewall"]
+PRODUCTS = ["firewall", "linode", "lke", "vpc"]
+PRODUCTS_CALL = {
+    "firewall": "networking.firewalls",
+    "linode": "linode.instances",
+    "lke": "lke.clusters",
+    "vpc": "vpcs"
+}
 
 
-def backup(client: LinodeClient) -> None:
+def main() -> None:
     """"Backup objects to local or Linode Object Storage."""
+    client = LinodeClient(token)
     if args.storage is None:
         storage = os.getcwd()
     else:
         storage = args.storage
     for product in args.products:
-        eval(f"{product}.backup(client=client, storage='{storage}'"
-             f", s3_id='{s3_id}', s3_secret='{s3_secret}', s3_url='{s3_url}')")
+        backup(product=product, client_call=PRODUCTS_CALL[product],
+               client=client, storage=storage, s3_id=s3_id,
+               s3_secret=s3_secret, s3_url=s3_url)
 
 
 parser = argparse.ArgumentParser()
@@ -59,11 +66,6 @@ if "AWS_ENDPOINT_URL" in os.environ:
     s3_url = os.environ["AWS_ENDPOINT_URL"]
 else:
     s3_url = None
-
-
-def main() -> None:
-    client = LinodeClient(token)
-    backup(client=client)
 
 
 if __name__ == "__main__":
