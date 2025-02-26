@@ -1,6 +1,6 @@
 What is YesterdayPy? - TLDR Version
 -----------------------------------
-| A Python software to backup Linode configuration to local folder or Linode Object Storage.
+| A Python software to backup Linode configuration to a local folder or Linode Object Storage.
 
 What is YesterdayPy? - Longer Version
 -------------------------------------
@@ -8,20 +8,20 @@ What is YesterdayPy? - Longer Version
 | If yes, YesterdayPy will help you find the answer.
 | If no, well, you are in the wrong corner of the Internet.
 |
-| Note: There was already a project called yesterday in PyPI, so I just added Py in front of the name.
+| Note: A project called yesterday was already in PyPI, so I just added Py in front of the name.
 |
 | YesterdayPy creates a backup of your Linode configuration.
 | For each Linode product (Firewall for example), the software will create a JSON file for each object you have.
-| The file will be named using format **ID+date.json**, with ID being the ID of the object (every Linode object has an ID), and date is the last update date.
-| If the file already exists, no file is created. That means, it will only backup the changes since last backup.
+| The file will be named using the format **ID+date.json**, with ID being the object's ID (every Linode object has an ID), and date being the last update date.
+| If the file already exists, no file is created. That means, it will only backup the changes since the last backup.
 |
-| If you want to know how the object was configured yesterday while troubleshooting a problem, you can just compare the current version with the JSON file.
+| If you want to know how the object was configured yesterday while troubleshooting a problem, you can then just compare the current version with the JSON file.
 
 Technical Bits
 --------------
 | Requires Python version 3.9 or above.
 | Requires **linode_api4** (https://github.com/linode/linode_api4-python).
-| If using to backup configuration to Linode Object Storage, **Boto3** is also required (https://github.com/boto/boto3).
+| If used to backup configuration to Linode Object Storage, **Boto3** is also required (https://github.com/boto/boto3).
 | Currently supports the following products Firewall, Linode, LKE, and VPC.
 
 Installation
@@ -38,7 +38,7 @@ Installation
 
    pipx inject yesterdaypy boto3
 
-| You can also just clone this repository and run:
+| You can also clone this repository and run:
 
 .. code-block:: python
 
@@ -46,7 +46,7 @@ Installation
 
 How to use it?
 --------------
-| First you need to setup the necessary environment variables.
+| First, you need to setup the necessary environment variables.
 |
 | Linode token is mandatory:
 
@@ -68,7 +68,7 @@ How to use it?
 
    yesterdaypy
 
-| It will backup all objects to current directory, for all supported products, with a folder per product.
+| It will backup all objects to the current directory, for all supported products, with a folder per product.
 
 | To backup to a specific folder, specify the location.
 
@@ -76,7 +76,7 @@ How to use it?
 
    yesterdaypy --storage /home/user/backup/example/
 
-| To backup to Linode Object Storage, stogare needs to start with **s3://** followed by the bucket name.
+| To backup to Linode Object Storage, storage needs to start with **s3://** followed by the bucket name.
 
 .. code-block:: python
 
@@ -84,7 +84,7 @@ How to use it?
 
 | You can also use **--products** to limit the products you want to backup.
 | Use **--errors** to get the list of errors.
-| Lastily, **--help** for the help information.
+| Lastly, **--help** for the help information.
 
 Author
 ------
