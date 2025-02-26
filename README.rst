@@ -30,10 +30,11 @@ Installation
 .. code-block:: python
 
    pipx install yesterdaypy
-   pipx inject yesterdaypy boto3
 
 | If you need Linode Object Storage, install Boto3.
 
 .. code-block:: python
 
    pipx inject yesterdaypy boto3
+
+sss
