@@ -20,8 +20,8 @@ What is YesterdayPy? - Longer Version
 Technical Bits
 --------------
 | Requires Python version 3.9 or above.
-| Requires linode_api4 (https://github.com/linode/linode_api4-python)
-| If using to backup configuration to Linode Object Storage, Boto3 is also required (https://github.com/boto/boto3)
+| Requires **linode_api4** (https://github.com/linode/linode_api4-python)
+| If using to backup configuration to Linode Object Storage, **boto3** is also required (https://github.com/boto/boto3)
 | Current supports the following products Firewall, Linode, LKE, and VPC.
 
 Installation
@@ -70,12 +70,12 @@ How to use it?
 
 | It will backup all objects to current directory, for all supported products.
 
-| To backup to Linode Object Storage, stogare needs to start with *s3://* followed by the bucket name.
+| To backup to Linode Object Storage, stogare needs to start with **s3://** followed by the bucket name.
 
 .. code-block:: python
 
    yesterdaypy --storage s3://bucket-name
 
-| You can also use *--products* to limit the products you want to backup.
-| Use *--errors* to get the list of errors.
-| Lastily, *--help* for the help information.
+| You can also use **--products** to limit the products you want to backup.
+| Use **--errors** to get the list of errors.
+| Lastily, **--help** for the help information.
