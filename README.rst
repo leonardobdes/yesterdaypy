@@ -94,8 +94,13 @@ To do
     Add verbosity to make visible what the software is doing.
 * Products
     Add more products.
+    Also, some objects have other obejcts under it (Linode Configuration Profile).
 * Thread
     Add threads for large configurations.
+* Mac OS
+    Test on MacOS, it should work.
+* Windows
+    Need some changes to work on Windows.
 
 Other software ideas
 --------------------
