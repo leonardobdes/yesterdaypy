@@ -28,19 +28,19 @@ Installation
 ------------
 | Use pipx (https://github.com/pypa/pipx) to install YesterdayPy.
 
-.. code-block:: python
+.. code-block:: bash
 
    pipx install yesterdaypy
 
 | If you need Linode Object Storage to store the backup, install Boto3.
 
-.. code-block:: python
+.. code-block:: bash
 
    pipx inject yesterdaypy boto3
 
 | You can also clone this repository and run:
 
-.. code-block:: python
+.. code-block:: bash
 
    python yesterdaypy/yesterdaypy.py
 
@@ -50,13 +50,13 @@ How to use it?
 |
 | Linode token is mandatory:
 
-.. code-block:: python
+.. code-block:: bash
 
    export LINODE_TOKEN=ABC
 
 | If using Linode Object Storage:
 
-.. code-block:: python
+.. code-block:: bash
 
    export AWS_ACCESS_KEY_ID=ABC
    export AWS_SECRET_ACCESS_KEY=ABC
@@ -64,7 +64,7 @@ How to use it?
 
 | Run the software:
 
-.. code-block:: python
+.. code-block:: bash
 
    yesterdaypy
 
@@ -72,19 +72,113 @@ How to use it?
 
 | To backup to a specific folder, specify the location.
 
-.. code-block:: python
+.. code-block:: bash
 
    yesterdaypy --storage /home/user/backup/example/
 
 | To backup to Linode Object Storage, storage needs to start with **s3://** followed by the bucket name.
 
-.. code-block:: python
+.. code-block:: bash
 
    yesterdaypy --storage s3://bucket-name
 
 | You can also use **--products** to limit the products you want to backup.
 | Use **--errors** to get the list of errors.
 | Lastly, **--help** for the help information.
+
+jq
+--
+| Download from https://github.com/jqlang/jq
+| Use jq to print the text in an easier to read format.
+| You can also use the online version https://play.jqlang.org/
+
+.. code-block:: bash
+
+  $ jq . 1056933+20250222233724.json
+  {
+    "id": 1056933,
+    "label": "test-fw",
+    "created": "2024-10-22T22:38:26",
+    "updated": "2025-02-22T23:37:24",
+    "status": "enabled",
+    "rules": {
+      "inbound": [
+        {
+          "action": "ACCEPT",
+          "addresses": {
+            "ipv4": [
+              "1.1.1.1/32"
+            ]
+          },
+          "ports": "22",
+          "protocol": "TCP",
+          "label": "test-ssh",
+          "description": null
+        }
+      ],
+      "inbound_policy": "DROP",
+      "outbound": [],
+      "outbound_policy": "ACCEPT",
+      "version": 3,
+      "fingerprint": "cb6bf75b"
+    },
+    "tags": [],
+    "entities": [
+      {
+        "id": 72473810,
+        "type": "linode",
+        "label": "ubuntu-gb-lon",
+        "url": "/v4/linode/instances/72473810"
+      }
+    ]
+  }
+
+| You can query a specifc part.
+
+.. code-block:: bash
+
+  $ jq .rules.inbound 1056933+20250222233724.json
+  [
+    {
+      "action": "ACCEPT",
+      "addresses": {
+        "ipv4": [
+          "1.1.1.1/32"
+        ]
+      },
+      "ports": "22",
+      "protocol": "TCP",
+      "label": "test-ssh",
+      "description": null
+    }
+  ]
+
+jd
+--
+| Download from https://github.com/josephburnett/jd
+| Use jd to compare 2 JSON file.
+| You can also use the online version http://play.jd-tool.io/
+
+.. code-block:: bash
+
+  $ jd 1056933+20250222233724.json 1056933+20250314231035.json
+  @ ["entities",0]
+  [
+  - {"id":72473810,"label":"ubuntu-gb-lon","type":"linode","url":"/v4/linode/instances/72473810"}
+  ]
+  @ ["rules","fingerprint"]
+  - "cb6bf75b"
+  + "69cc1741"
+  @ ["rules","inbound",1]
+    {"action":"ACCEPT","addresses":{"ipv4":["1.1.1.1/32"]},"description":null,"label":"test-ssh","ports":"22","protocol":"TCP"}
+  + {"action":"ACCEPT","addresses":{"ipv4":["0.0.0.0/0"],"ipv6":["::/0"]},"description":null,"label":"icmp","protocol":"ICMP"}
+  ]
+  @ ["rules","version"]
+  - 3
+  + 4
+  @ ["updated"]
+  - "2025-02-22T23:37:24"
+  + "2025-03-14T23:10:35"
 
 To do
 -----
