@@ -89,7 +89,7 @@ How to use it?
 jq
 --
 | Download from https://github.com/jqlang/jq
-| Use jq to print the text in an easier to read format.
+| Use jq to print the text formatted.
 | You can also use the online version https://play.jqlang.org/
 
 .. code-block:: bash
@@ -133,7 +133,7 @@ jq
     ]
   }
 
-| You can query a specifc part.
+| You can query a specific part.
 
 .. code-block:: bash
 
@@ -156,7 +156,7 @@ jq
 jd
 --
 | Download from https://github.com/josephburnett/jd
-| Use jd to compare 2 JSON file.
+| Use jd to compare 2 JSON files.
 | You can also use the online version http://play.jd-tool.io/
 
 .. code-block:: bash
