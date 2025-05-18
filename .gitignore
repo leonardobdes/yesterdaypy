@@ -6,3 +6,4 @@ pylama.ini
 poc/
 dist/
 *egg*/
+*~

@@ -1,0 +1,6 @@
+[Unit]
+Description=YesterdayPy timer
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+Unit=yesterdaypy.service

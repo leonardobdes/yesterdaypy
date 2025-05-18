@@ -86,6 +86,33 @@ How to use it?
 | Use **--errors** to get the list of errors.
 | Lastly, **--help** for the help information.
 
+Docker
+------
+| You can use the Dockerfile in this repository to build a local image.
+| Also, the image is available from DockerHub.
+
+| Use the export command to setup the necessary environment variables.
+| Example using DockerHub:
+
+.. code-block:: bash
+
+   docker run -i -e LINODE_TOKEN \
+   --mount type=bind,src=.,dst=/usr/local/yesterdaypy \
+   leonardobdes/yesterdaypy:latest
+
+| This will save the files to the current folder.
+| You don't need the mount option to save to Linode Object Storage.
+
+Systemd Service
+---------------
+| The most common setup will be to run YesterdayPy daily.
+| You can do that using a systemd service and timer.
+| Copy the files **yesterdaypy.service** and **yesterdaypy.timer** to the folder **/etc/systemd/system/**.
+
+| The timer is configured to run daily at midnight, so change it based on your preference.
+| The service has 2 examples, the first command runs the software after installation using pipx, and the second one using Docker.
+| In both cases, it read the Linode token from the file **linode_token.txt**.
+
 jq
 --
 | Download from https://github.com/jqlang/jq
