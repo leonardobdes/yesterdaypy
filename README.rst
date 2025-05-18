@@ -212,10 +212,6 @@ jd
 
 To do
 -----
-* Debug
-    Add debug options for troubleshooting.
-* Verbose
-    Add verbosity to make visible what the software is doing.
 * Products
     Add more products.
     Also, some objects have other obejcts under it (Linode Configuration Profile).
