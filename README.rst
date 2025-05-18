@@ -84,6 +84,9 @@ How to use it?
 
 | You can also use **--products** to limit the products you want to backup.
 | Use **--errors** to get the list of errors.
+| Use **--output** to print basic information.
+| Use **--verbose** to print extra information.
+| Use **--debug** to print debug information.
 | Lastly, **--help** for the help information.
 
 Docker

@@ -2,6 +2,7 @@
 # Import only with "import package",
 # it will make explicity in the code where it came from.
 import argparse
+import datetime
 import os
 import sys
 
@@ -23,17 +24,20 @@ PRODUCTS_CALL = {
 }
 
 
-def main() -> None:
+def main(args: argparse.Namespace) -> None:
     """"Backup objects to local or Linode Object Storage."""
     client = LinodeClient(token)
     if args.storage is None:
         storage = os.getcwd()
     else:
         storage = args.storage
+    if (args.output or args.verbose):
+        print(f"Backing up to: {storage}")
     for product in args.products:
         backup(product=product, client_call=PRODUCTS_CALL[product],
                client=client, storage=storage, s3_id=s3_id,
-               s3_secret=s3_secret, s3_url=s3_url)
+               s3_secret=s3_secret, s3_url=s3_url, output=args.output,
+               verbose=args.verbose, debug=args.debug)
 
 
 parser = argparse.ArgumentParser()
@@ -43,12 +47,22 @@ parser.add_argument("--storage", type=str,
                     help="Storage to save the data.")
 parser.add_argument("--products", choices=PRODUCTS, nargs="+", default=PRODUCTS,
                     help="Products to backup.")
+parser.add_argument("--output", action="store_true",
+                    help="Print basic information.")
+parser.add_argument("--verbose", action="store_true",
+                    help="Print extra information.")
+parser.add_argument("--debug", action="store_true",
+                    help="Print debug information.")
 args = parser.parse_args()
 
 if args.errors:
     for code in ERRORS:
         print(f"Error {code}: {ERRORS[code]}.")
     sys.exit(0)
+if ((args.output and args.verbose) or
+        (args.output and args.debug) or
+        (args.verbose and args.debug)):
+    error(3)
 
 if "LINODE_TOKEN" in os.environ:
     token = os.environ["LINODE_TOKEN"]
@@ -69,4 +83,10 @@ else:
 
 
 if __name__ == "__main__":
-    main()
+    if (args.output or args.verbose):
+        print("--------------------------------------")
+        print(f"Start time: {datetime.datetime.now()}")
+    main(args)
+    if (args.output or args.verbose):
+        print(f"End time: {datetime.datetime.now()}")
+        print("####################################")
