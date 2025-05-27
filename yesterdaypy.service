@@ -4,5 +4,5 @@ After=network.target
 
 [Service]
 Type=simple
-#ExecStart=LINODE_TOKEN=`cat linode_token.txt` yesterdaypy
-#ExecStart=docker run -e LINODE_TOKEN=`cat linode_token.txt` --mount type=bind,src=.,dst=/usr/local/yesterdaypy leonardobdes/yesterdaypy:latest
+#ExecStart=bash -c 'LINODE_TOKEN=`cat linode_token.txt` yesterdaypy'
+#ExecStart=bash -c 'docker run -i --rm -e LINODE_TOKEN=`cat linode_token.txt` --mount type=bind,src=.,dst=/usr/local/yesterdaypy leonardobdes/yesterdaypy:latest yesterdaypy --output &>> ./output.log'
