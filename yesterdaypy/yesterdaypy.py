@@ -24,8 +24,12 @@ PRODUCTS_CALL = {
 }
 
 
-def main(args: argparse.Namespace) -> None:
+def main() -> None:
     """"Backup objects to local or Linode Object Storage."""
+    if (args.output or args.verbose):
+        print("--------------------------------------")
+        print(f"Start time: {datetime.datetime.now()}")
+
     client = LinodeClient(token)
     if args.storage is None:
         storage = os.getcwd()
@@ -38,6 +42,10 @@ def main(args: argparse.Namespace) -> None:
                client=client, storage=storage, s3_id=s3_id,
                s3_secret=s3_secret, s3_url=s3_url, output=args.output,
                verbose=args.verbose, debug=args.debug)
+
+    if (args.output or args.verbose):
+        print(f"End time: {datetime.datetime.now()}")
+        print("####################################")
 
 
 parser = argparse.ArgumentParser()
@@ -83,10 +91,4 @@ else:
 
 
 if __name__ == "__main__":
-    if (args.output or args.verbose):
-        print("--------------------------------------")
-        print(f"Start time: {datetime.datetime.now()}")
-    main(args)
-    if (args.output or args.verbose):
-        print(f"End time: {datetime.datetime.now()}")
-        print("####################################")
+    main()
