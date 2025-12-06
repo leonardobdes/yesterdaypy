@@ -92,7 +92,7 @@ How to use it?
 Docker
 ------
 | You can use the Dockerfile in this repository to build a local image.
-| Also, the image is available from DockerHub.
+| Also, the image is available from DockerHub (https://hub.docker.com/r/leonardobdes/yesterdaypy).
 |
 | Use the export command to setup the necessary environment variables.
 | Example using DockerHub:
@@ -114,7 +114,7 @@ Systemd Service
 |
 | The timer is configured to run daily at midnight, so change it based on your preference.
 | The service has 2 examples, the first command runs the software after installation using pipx, and the second one using Docker.
-| In both cases, it read the Linode token from the file **linode_token.txt**.
+| In both cases, it reads the Linode token from the file **linode_token.txt**.
 
 jq
 --
