@@ -38,7 +38,7 @@ Installation
 
 .. code-block:: bash
 
-   pipx inject yesterdaypy boto3
+   pipx inject yesterdaypy boto3==1.35.99
 
 | You can also clone this repository and run:
 
