@@ -33,6 +33,8 @@ Installation
    pipx install yesterdaypy
 
 | If you need Linode Object Storage to store the backup, install Boto3.
+| You must use boto version 1.35.99, until Linode fixes compatibility.
+| More information here (https://techdocs.akamai.com/cloud-computing/docs/aws-cli-sdks-support-details).
 
 .. code-block:: bash
 
