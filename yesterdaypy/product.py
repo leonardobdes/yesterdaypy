@@ -53,7 +53,7 @@ def backup(product: str, client_call: str, client: LinodeClient, storage: str,
             file_name = f"{object.id}+{date}"
             full_file_name = f"{product}/{file_name}.json"
             try:
-                client.head_object(Bucket=bucket, key=full_file_name)
+                client.head_object(Bucket=bucket, Key=full_file_name)
                 if (verbose):
                     print("    Object Status: same")
             except:
