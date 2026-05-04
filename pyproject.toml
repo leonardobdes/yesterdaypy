@@ -27,3 +27,6 @@ version = { attr = "yesterdaypy.version.__version__" }
 
 [tool.setuptools.packages.find]
 exclude = ['poc']
+
+[tool.ty.environment]
+extra-paths = ["/home/lbs/.local/lib/python3.14/site-packages"]
